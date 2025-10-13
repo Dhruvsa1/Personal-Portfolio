@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import './Cabinet.css';
 
 interface DrawerProps {
@@ -38,9 +39,27 @@ const Drawer = ({ position, label, link, isLetters }: DrawerProps) => {
 };
 
 export default function Cabinet() {
+  const [isAnimated, setIsAnimated] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation after a short delay
+    const timer = setTimeout(() => {
+      setIsAnimated(true);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="cabinet-container">
-      <div className="chest">
+      <div className={`cabinet-wrapper ${isAnimated ? 'animated' : ''}`}>
+        {!isAnimated && (
+          <div className="cabinet-arrow">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        )}
+        <div className="chest">
         <div className="chest__panel chest__panel--back"></div>
         <div className="chest__panel chest__panel--top"></div>
         <div className="chest__panel chest__panel--bottom"></div>
@@ -59,6 +78,7 @@ export default function Cabinet() {
         <Drawer position={7} label="Resume" link="/resume" />
         <Drawer position={8} label="Contact" link="/contact" isLetters={true} />
       </div>
+    </div>
     </div>
   );
 }
