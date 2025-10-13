@@ -1,6 +1,6 @@
 .cabinet-container {
   position: fixed;
-  left: 2rem;
+  left: 4rem;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1000;
@@ -23,7 +23,7 @@
   --hover: 0.05;
   --default: 0.01;
   --limit: 0.9;
-  --height: 45;
+  --height: 60;
   --width: 20;
   --depth: 15;
   --frame: 1;
