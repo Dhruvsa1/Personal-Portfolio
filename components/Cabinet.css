@@ -1,9 +1,11 @@
 .cabinet-container {
   position: fixed;
   left: 4rem;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 4rem;
+  bottom: 4rem;
   z-index: 1000;
+  display: flex;
+  align-items: center;
 }
 
 .cabinet-container * {
@@ -23,7 +25,7 @@
   --hover: 0.05;
   --default: 0.01;
   --limit: 0.9;
-  --height: 60;
+  --height: 80;
   --width: 20;
   --depth: 15;
   --frame: 1;
@@ -83,14 +85,17 @@
 }
 
 .chest__panel--front-frame::after {
-  top: calc(100% / 5 * 2);
+  top: calc(100% / 8 * 2);
   box-shadow: 
-    0 calc(100% / 5 * 1) 0 0 var(--unit-one),
-    0 calc(100% / 5 * 3) 0 0 var(--unit-one);
+    0 calc(100% / 8 * 1) 0 0 var(--unit-one),
+    0 calc(100% / 8 * 3) 0 0 var(--unit-one),
+    0 calc(100% / 8 * 4) 0 0 var(--unit-one),
+    0 calc(100% / 8 * 5) 0 0 var(--unit-one),
+    0 calc(100% / 8 * 6) 0 0 var(--unit-one);
 }
 
 .chest__panel--front-frame::before {
-  top: calc(100% / 5 * 4);
+  top: calc(100% / 8 * 7);
 }
 
 .chest__panel--left,
@@ -131,7 +136,7 @@
 }
 
 .chest__drawer {
-  --drawer-height: calc((var(--height) - (7 * var(--frame))) / 5);
+  --drawer-height: calc((var(--height) - (9 * var(--frame))) / 8);
   position: absolute;
   left: 50%;
   height: calc(var(--drawer-height) * 1vmin);
@@ -162,6 +167,21 @@
 .chest__drawer[data-position="5"] {
   --index: 5;
   top: calc(((5 * var(--frame)) + (4 * var(--drawer-height))) * 1vmin);
+}
+
+.chest__drawer[data-position="6"] {
+  --index: 6;
+  top: calc(((6 * var(--frame)) + (5 * var(--drawer-height))) * 1vmin);
+}
+
+.chest__drawer[data-position="7"] {
+  --index: 7;
+  top: calc(((7 * var(--frame)) + (6 * var(--drawer-height))) * 1vmin);
+}
+
+.chest__drawer[data-position="8"] {
+  --index: 8;
+  top: calc(((8 * var(--frame)) + (7 * var(--drawer-height))) * 1vmin);
 }
 
 .drawer__structure {

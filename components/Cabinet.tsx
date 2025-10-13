@@ -53,8 +53,11 @@ export default function Cabinet() {
         <Drawer position={1} label="Home" link="/" />
         <Drawer position={2} label="About" link="/about" />
         <Drawer position={3} label="Projects" link="/projects" />
-        <Drawer position={4} label="Blog" link="/blog" />
-        <Drawer position={5} label="Contact" link="/contact" isLetters={true} />
+        <Drawer position={4} label="Skills" link="/skills" />
+        <Drawer position={5} label="Experience" link="/experience" />
+        <Drawer position={6} label="Blog" link="/blog" />
+        <Drawer position={7} label="Resume" link="/resume" />
+        <Drawer position={8} label="Contact" link="/contact" isLetters={true} />
       </div>
     </div>
   );
