@@ -90,15 +90,15 @@
 @supports (animation-timeline: scroll()) {
   @media (prefers-reduced-motion: no-preference) {
     .name-reveal .slide-out-first {
-      animation: slideOut linear forwards;
+      animation: slideOut ease-out forwards;
       animation-timeline: scroll(root block);
-      animation-range: 7.5% 12%;
+      animation-range: 6% 16%;
     }
     
     .name-reveal .slide-out-second {
-      animation: slideOut linear forwards;
+      animation: slideOut ease-out forwards;
       animation-timeline: scroll(root block);
-      animation-range: 10% 15%;
+      animation-range: 8% 18%;
     }
   }
 }
@@ -108,9 +108,17 @@
     opacity: 0;
     max-width: 0;
   }
+  25% {
+    opacity: 0.3;
+    max-width: 12vmin;
+  }
   50% {
-    opacity: 0.5;
+    opacity: 0.6;
     max-width: 25vmin;
+  }
+  75% {
+    opacity: 0.8;
+    max-width: 38vmin;
   }
   100% {
     opacity: 1;
