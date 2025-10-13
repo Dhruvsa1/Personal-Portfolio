@@ -19,7 +19,8 @@
   align-items: center;
   justify-content: center;
   transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transform: rotateX(0deg) rotateY(0deg);
+  transform-origin: left center;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -29,7 +30,7 @@
   width: auto;
   height: auto;
   box-shadow: none;
-  transform: rotateX(-32deg) rotateY(40deg);
+  transform: perspective(1000px) rotateX(-32deg) rotateY(40deg);
 }
 
 .cabinet-arrow {
@@ -85,16 +86,18 @@
   --transition: 0.2s;
   
   height: calc(var(--height) * 1vmin);
-  transform: translate3d(0, 0, 50vmin);
   width: calc(var(--width) * 1vmin);
   color: hsl(0, 10%, 10%);
   position: relative;
   opacity: 0;
-  transition: opacity 0.6s ease-in 0.6s;
+  visibility: hidden;
+  transition: opacity 0.6s ease-in 0.6s, visibility 0s 0s;
 }
 
 .cabinet-wrapper.animated .chest {
   opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 50vmin);
 }
 
 .chest__panel {
