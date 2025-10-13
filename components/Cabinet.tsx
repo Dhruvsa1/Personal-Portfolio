@@ -41,17 +41,16 @@ const Drawer = ({ position, label, link, isLetters }: DrawerProps) => {
 export default function Cabinet() {
   const [isAnimated, setIsAnimated] = useState(false);
 
-  useEffect(() => {
-    // Trigger animation after a short delay
-    const timer = setTimeout(() => {
-      setIsAnimated(true);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, []);
+  const handleClick = () => {
+    setIsAnimated(true);
+  };
 
   return (
     <div className="cabinet-container">
-      <div className={`cabinet-wrapper ${isAnimated ? 'animated' : ''}`}>
+      <div 
+        className={`cabinet-wrapper ${isAnimated ? 'animated' : ''}`}
+        onClick={handleClick}
+      >
         {!isAnimated && (
           <div className="cabinet-arrow">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
