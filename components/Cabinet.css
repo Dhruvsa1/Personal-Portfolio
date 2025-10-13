@@ -10,45 +10,59 @@
 
 .cabinet-wrapper {
   position: relative;
-  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-  border-radius: 8px;
-  padding: 0;
   width: 80px;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transform-origin: left center;
-  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+}
+
+.cabinet-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 100%;
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.5s ease-out 0.8s;
+  z-index: 5;
+}
+
+.cabinet-wrapper.animated::before {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .cabinet-wrapper.animated {
-  background: transparent;
-  border-radius: 0;
   width: auto;
   height: auto;
-  box-shadow: none;
-  transform: perspective(1000px) rotateX(-32deg) rotateY(40deg);
 }
 
 .cabinet-arrow {
   position: absolute;
   color: white;
   z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   animation: arrowPulse 1.5s ease-in-out infinite;
   pointer-events: none;
+  transition: opacity 0.3s ease-out 0.8s;
+}
+
+.cabinet-wrapper.animated .cabinet-arrow {
+  opacity: 0;
 }
 
 @keyframes arrowPulse {
   0%, 100% {
     opacity: 0.6;
-    transform: translateX(0);
+    transform: translate(-50%, -50%) translateX(0);
   }
   50% {
     opacity: 1;
-    transform: translateX(5px);
+    transform: translate(-50%, -50%) translateX(5px);
   }
 }
 
@@ -89,15 +103,13 @@
   width: calc(var(--width) * 1vmin);
   color: hsl(0, 10%, 10%);
   position: relative;
+  transform: translate3d(0, 0, 50vmin) rotateX(-32deg) rotateY(40deg);
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.6s ease-in 0.6s, visibility 0s 0s;
+  transition: opacity 0.8s ease-in 0.5s, transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s;
 }
 
 .cabinet-wrapper.animated .chest {
   opacity: 1;
-  visibility: visible;
-  transform: translate3d(0, 0, 50vmin);
 }
 
 .chest__panel {
