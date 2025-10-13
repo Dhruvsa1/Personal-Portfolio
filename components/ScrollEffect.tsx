@@ -5,14 +5,10 @@ export default function ScrollEffect() {
     <div className="stuck-grid">
       <div className="grid-item name-reveal">
         <div className="name-container">
-          <div className="name-part">
-            <span className="big-d">D</span>
-            <span className="slide-out">hruvsai</span>
-          </div>
-          <div className="name-part">
-            <span className="big-d">D</span>
-            <span className="slide-out">hulipudi</span>
-          </div>
+          <span className="big-d">D</span>
+          <span className="slide-out slide-out-first">hruvsai</span>
+          <span className="big-d">D</span>
+          <span className="slide-out slide-out-second">hulipudi</span>
         </div>
       </div>
       <div className="grid-item">two</div>
