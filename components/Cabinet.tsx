@@ -50,9 +50,11 @@ export default function Cabinet() {
         </div>
         <div className="chest__panel chest__panel--left"></div>
         
-        <Drawer position={1} label="About" link="/about" />
-        <Drawer position={2} label="Projects" link="/projects" />
-        <Drawer position={3} label="Contact" link="/contact" isLetters={true} />
+        <Drawer position={1} label="Home" link="/" />
+        <Drawer position={2} label="About" link="/about" />
+        <Drawer position={3} label="Projects" link="/projects" />
+        <Drawer position={4} label="Blog" link="/blog" />
+        <Drawer position={5} label="Contact" link="/contact" isLetters={true} />
       </div>
     </div>
   );

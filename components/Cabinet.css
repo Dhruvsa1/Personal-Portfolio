@@ -1,7 +1,8 @@
 .cabinet-container {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1000;
 }
 
@@ -77,16 +78,19 @@
   height: calc(var(--frame) * 1.5vmin);
   width: calc(var(--width) * 1vmin);
   position: absolute;
-  transform: translate(-50%, -50%);
   left: 50%;
+  transform: translateX(-50%);
 }
 
 .chest__panel--front-frame::after {
-  top: calc(100% / 3 * 1.01);
+  top: calc(100% / 5 * 2);
+  box-shadow: 
+    0 calc(100% / 5 * 1) 0 0 var(--unit-one),
+    0 calc(100% / 5 * 3) 0 0 var(--unit-one);
 }
 
 .chest__panel--front-frame::before {
-  top: calc(100% / 3 * 2.01);
+  top: calc(100% / 5 * 4);
 }
 
 .chest__panel--left,
@@ -127,7 +131,7 @@
 }
 
 .chest__drawer {
-  --drawer-height: calc((var(--height) - (5 * var(--frame))) / 3);
+  --drawer-height: calc((var(--height) - (7 * var(--frame))) / 5);
   position: absolute;
   left: 50%;
   height: calc(var(--drawer-height) * 1vmin);
@@ -148,6 +152,16 @@
 .chest__drawer[data-position="3"] {
   --index: 3;
   top: calc(((3 * var(--frame)) + (2 * var(--drawer-height))) * 1vmin);
+}
+
+.chest__drawer[data-position="4"] {
+  --index: 4;
+  top: calc(((4 * var(--frame)) + (3 * var(--drawer-height))) * 1vmin);
+}
+
+.chest__drawer[data-position="5"] {
+  --index: 5;
+  top: calc(((5 * var(--frame)) + (4 * var(--drawer-height))) * 1vmin);
 }
 
 .drawer__structure {
