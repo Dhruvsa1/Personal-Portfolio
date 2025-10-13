@@ -113,12 +113,14 @@
   width: calc(var(--width) * 1vmin);
   color: hsl(0, 10%, 10%);
   position: relative;
-  transform: translate3d(0, 0, 50vmin) rotateX(-32deg) rotateY(40deg);
+  transform-origin: left center;
+  transform: translate3d(0, 0, 50vmin) rotateX(0deg) rotateY(90deg);
   opacity: 0;
-  transition: opacity 0.8s ease-in 0.5s, transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s;
+  transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s, opacity 0.3s ease-in 0.5s;
 }
 
 .cabinet-wrapper.animated .chest {
+  transform: translate3d(0, 0, 50vmin) rotateX(-32deg) rotateY(40deg);
   opacity: 1;
 }
 
