@@ -1,3 +1,13 @@
+/* Hide scrollbars site-wide while preserving scrolling */
+html, body {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+
+/* WebKit */
+*::-webkit-scrollbar {
+  display: none;
+}
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
