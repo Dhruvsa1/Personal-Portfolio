@@ -29,6 +29,8 @@ export default function ScrollEffect() {
   const [showExperience1, setShowExperience1] = useState(false);
   const [profileImageSrc, setProfileImageSrc] = useState<string>('https://website-file-manager.b-cdn.net/Website%20Assets/IMG_3473.jpg');
   const [showProfilePlaceholder, setShowProfilePlaceholder] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
   
   // Random tech/portfolio words for the loading animation
   const loadingWords = useMemo(() => [
@@ -186,14 +188,23 @@ export default function ScrollEffect() {
     }
   };
 
-  // Copy to clipboard function
-  const copyToClipboard = async (text: string) => {
+  // Copy to clipboard function with toast notification
+  const copyToClipboard = async (text: string, message: string = 'Copied to clipboard!') => {
     try {
       await navigator.clipboard.writeText(text);
-      // You could add a toast notification here
-      console.log('Copied to clipboard:', text);
+      setToastMessage(message);
+      setShowToast(true);
+      // Hide toast after 2 seconds
+      setTimeout(() => {
+        setShowToast(false);
+      }, 2000);
     } catch (err) {
       console.error('Failed to copy: ', err);
+      setToastMessage('Failed to copy');
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 2000);
     }
   };
 
@@ -300,31 +311,6 @@ export default function ScrollEffect() {
                     </svg>
                   </a>
                   
-                  {/* Personal Email */}
-                  <button 
-                    onClick={() => copyToClipboard('ddhruvsai@outlook.com')} 
-                    className="social-link email-link"
-                    title="Copy personal email to clipboard"
-                  >
-                    <div className="letter-image">
-                      <div className="animated-mail">
-                        <div className="back-fold"></div>
-                        <div className="letter">
-                          <div className="letter-border"></div>
-                          <div className="letter-title"></div>
-                          <div className="letter-context"></div>
-                          <div className="letter-stamp">
-                            <div className="letter-stamp-inner"></div>
-                          </div>
-                        </div>
-                        <div className="top-fold"></div>
-                        <div className="body"></div>
-                        <div className="left-fold"></div>
-                      </div>
-                      <div className="shadow">                      </div>
-                    </div>
-                  </button>
-                  
                   {/* School Email */}
                   <button 
                     onClick={() => copyToClipboard('ddhulipudi3@gatech.edu')} 
@@ -352,7 +338,7 @@ export default function ScrollEffect() {
                   
                   {/* Phone */}
                   <button 
-                    onClick={() => copyToClipboard('4703573785')} 
+                    onClick={() => copyToClipboard('4703573785', 'Phone number copied!')} 
                     className="social-link"
                     title="Copy phone number to clipboard"
                   >
@@ -401,11 +387,11 @@ export default function ScrollEffect() {
                         }}
                       />
                     ) : (
-                      <div className="profile-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                      </div>
+                    <div className="profile-icon">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
+                    </div>
                     )}
                   </div>
                 </div>
@@ -436,9 +422,9 @@ export default function ScrollEffect() {
                     <div className="contact-info">
                       <span>US Citizen</span>
                       <span>|</span>
-                      <a href="mailto:ddhruvsai@outlook.com" className="contact-link">ddhruvsai@outlook.com</a>
+                      <a href="mailto:ddhulipudi3@gatech.edu" className="contact-link">ddhulipudi3@gatech.edu</a>
                       <span>|</span>
-                      <a href="tel:4703573785" className="contact-link">(470)-357-3785</a>
+                      <a href="tel:4703573785" className="contact-link">4703573785</a>
                       <span>|</span>
                       <a href="https://www.linkedin.com/in/dhruvsai-dhulipudi-259a83293/" target="_blank" rel="noopener noreferrer" className="contact-link">LinkedIn: Dhruvsai Dhulipudi</a>
                       <span>|</span>
@@ -620,6 +606,18 @@ export default function ScrollEffect() {
           >
             Skip <span className="button-icon">⏭</span>
           </button>
+        </div>
+      )}
+
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="toast-notification">
+          <div className="toast-content">
+            <svg className="toast-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span className="toast-message">{toastMessage}</span>
+          </div>
         </div>
       )}
     </>
